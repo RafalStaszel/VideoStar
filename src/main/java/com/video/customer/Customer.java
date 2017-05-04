@@ -1,10 +1,7 @@
 package com.video.customer;
 
 import java.time.LocalDate;
-import java.time.Period;
 import java.time.temporal.ChronoUnit;
-
-import com.video.film.Film;
 
 public class Customer {
 	String name;

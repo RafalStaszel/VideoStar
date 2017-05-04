@@ -13,15 +13,15 @@ import com.video.film.Film;
 
 public class OrderMachine {
 	
-	DataLocal dataLocal = new DataLocal();
+	Database database = new Database();
 
 	public void start() {
 
-		// Database database = new Database();
-		// database.runBase();
 		
 		//test user
 		String user = "Rafal";
+		database.runBase();
+		
 
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Wybierz opcjê \n1 - Poka¿ filmy\n2 - Po¿ycz film \n3 - Oddaj film \n4 - Przegl¹d wypo¿yczeñ");
@@ -31,8 +31,6 @@ public class OrderMachine {
 		switch (chosen) {
 		case 1: {
 			// pokaz filmy
-			// casetette.showFilms();
-			dataLocal.pokazFilmy();
 			// dataLocal.pokazFilmyIterator();
 			break;
 		}
@@ -40,23 +38,21 @@ public class OrderMachine {
 			// wypozyczenie filmu
 			System.out.println("Jaki film po¿yczasz?");
 			int selectFilm = scan.nextInt();
-			dataLocal.setBorrowFilm(selectFilm-1,user);
-			// dodac metode klienta
+			Film film = database.findById(selectFilm);
 			
 			
-			
-			System.out.println("Wypo¿yczasz film "+dataLocal.getFilms().get(selectFilm-1).getTitle()+"\n");
+			System.out.println("Wypo¿yczasz film "+film.getTitle()+"\n");
 			break;
 		}
 		case 3:{
 			System.out.println("Jaki film oddajesz?");
 			int selectFilm = scan.nextInt();
-			dataLocal.returnBorrowedFilm(selectFilm-1);
-			System.out.println("Oddajesz film "+dataLocal.getFilms().get(selectFilm-1).getTitle()+"\n");
+		//	database.returnBorrowedFilm(selectFilm-1);
+		//	System.out.println("Oddajesz film "+database.getFilms().get(selectFilm-1).getTitle()+"\n");
 		}
 		case 4:{
 			System.out.println("Sprawdzamy status wypo¿yczeñ");
-			System.out.println(dataLocal.getCustomers().get(0).toString());
+		//	System.out.println(database.getCustomers().get(0).toString());
 		}
 		
 

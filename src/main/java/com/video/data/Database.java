@@ -6,52 +6,36 @@ import javax.persistence.Persistence;
 
 import com.video.film.Film;
 
-
-//   wyczyscic klase
 public class Database {
 
-	
-	
-	public void runBase(){
-	/*	
-	EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("bazaVideo");
-	EntityManager entityManager = entityManagerFactory.createEntityManager();
-	*/
-	
-	
+	public void runBase() {
 
-	//Film film1 = new Film(); 
-	//Film film2 = new Film(); 
-	
-	//film1.setId(1);
-	//film1.setTitle("Terminator");
-	//film1.setAvaible(true);
-			
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("videoBaza");
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-	//film2.setId(2);
-	//film2.setTitle("Rocky");
-	//film2.setAvaible(false);
-			
+		entityManager.getTransaction().begin();
 
+		// placeholder
 
-/*
-	entityManager.getTransaction().begin();
-	
-	
-	
-	//Film film1 = query.getSingleResult();
-	
-	Film film1 = entityManager.find(Film.class, 1);
-	
-	System.out.println("Film z bazy - "+film1.getTitle());
-	
-	entityManager.getTransaction().commit();
+		entityManager.getTransaction().commit();
+		entityManager.close();
+		entityManagerFactory.close();
 
+	}
 
-	entityManager.close();
-	entityManagerFactory.close();
-	*/
-	
+	public Film findById(int i) {
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("videoBaza");
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+		entityManager.getTransaction().begin();
+
+		Film film = entityManager.find(Film.class, i);
+
+		entityManager.getTransaction().commit();
+		entityManager.close();
+		entityManagerFactory.close();
+
+		return film;
 	}
 
 }
