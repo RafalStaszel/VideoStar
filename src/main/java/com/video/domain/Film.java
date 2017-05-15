@@ -1,24 +1,13 @@
-package com.video.film;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+package com.video.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-//probably class to remove, in its place will be Rest Service (RestVideo)
-@Entity
-@Table(name = "film")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Film {
 
-	@Id
-	@GeneratedValue
 	private int id;
-	@Column(name = "title", nullable = false, length = 20)
 	private String title;
-	@Column(name = "avaible ")
 	private boolean avaible;
 
 	public Film(int id, String title) {
@@ -57,7 +46,6 @@ public class Film {
 
 	@Override
 	public String toString() {
-		// dodac pokazywanie id w metodzie toString
 		String avaibleStr;
 		if (avaible == true)
 			avaibleStr = "tak";
